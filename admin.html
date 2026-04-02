@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Arjun Unisex Salon</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+    <!-- Login View -->
+    <div id="login-view" class="login-container">
+        <div class="login-card fade-in">
+            <h2 class="logo text-center"><span>Arjun Unisex</span> Admin</h2>
+            <div id="login-alert" class="alert"></div>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="login-user" class="form-control" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-pass" class="form-control" placeholder="password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
+            </form>
+            <p class="text-center mt-2"><a href="index.html" style="color: var(--text-light); font-size: 0.9rem;">&larr; Back to Main Site</a></p>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboard-view" class="dashboard-layout">
+        <aside class="sidebar">
+            <h2 class="logo"><span>Arjun Unisex</span> Admin</h2>
+            <nav class="nav-menu">
+                <button onclick="switchView('gallery')" class="active" id="btn-gallery">Gallery Manager</button>
+                <button onclick="switchView('settings')" id="btn-settings">Settings</button>
+                <button onclick="logout()" style="margin-top: 2rem; color: #ff6b6b;">Logout</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Gallery Section -->
+            <section id="sec-gallery" class="section-view active">
+                <div class="panel-header">
+                    <h2>Manage Gallery</h2>
+                </div>
+                <form id="addGalleryForm" class="card" style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap;">
+                    <div class="admin-form-group" style="flex: 1; min-width: 200px; margin: 0;">
+                        <label>Image File Upload</label>
+                        <input type="file" id="g-file" required accept="image/*">
+                    </div>
+                    <div class="admin-form-group" style="flex: 1; min-width: 200px; margin: 0;">
+                        <label>Alt Text</label>
+                        <input type="text" id="g-alt" required placeholder="Salon interior">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Image</button>
+                </form>
+                <div id="admin-gallery-table" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <!-- Gallery admin injected by JS -->
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="sec-settings" class="section-view">
+                <div class="panel-header">
+                    <h2>Account Settings</h2>
+                </div>
+                <form id="updateCredsForm" class="card" style="max-width: 500px;">
+                    <div id="creds-alert" class="alert"></div>
+                    <div class="admin-form-group">
+                        <label>New Username</label>
+                        <input type="text" id="new-user" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label>New Password</label>
+                        <input type="password" id="new-pass" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Update Credentials</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

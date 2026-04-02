@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Arjun Unisex Salon</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0;">
+            <a href="index.html" class="logo"><span>Arjun Unisex</span> Salon</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><button class="btn btn-primary" onclick="openBookingModal()">Book Now</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <main style="margin-top: 80px;">
+        <section style="padding: 4rem 0; background: var(--bg-color); min-height: 80vh;">
+            <div class="container text-center">
+                <h1 class="section-title">Our Premium Services</h1>
+                <p style="color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: -1.5rem auto 3rem;">
+                    View our full range of salon and spa treatments designed to bring out your natural beauty.</p>
+
+                <div id="services-container"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                    <!-- Services injected by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBookingModal()">×</button>
+            <h2 class="mb-2 text-center" style="color: var(--secondary-color);">Book Appointment</h2>
+            <div id="booking-alert" class="alert"></div>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="b-name">Full Name</label>
+                    <input type="text" id="b-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="b-service">Service</label>
+                    <select id="b-service" class="form-control" required>
+                        <option value="">Select a service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="b-date">Date</label>
+                    <input type="date" id="b-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="b-time">Time</label>
+                    <input type="time" id="b-time" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Confirm
+                    Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <h3 style="margin-bottom: 1rem; font-size: 1.5rem; letter-spacing: 1px;"><span
+                    style="color: var(--primary-color);">Arjun Unisex</span> Salon</h3>
+            <p>&copy; <span id="year"></span> Arjun Unisex Salon. All rights reserved.</p>
+            <p style="margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem;">
+                <a href="admin.html" style="font-size: 0.9rem;">Admin Login</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/services.js"></script>
+</body>
+
+</html>
