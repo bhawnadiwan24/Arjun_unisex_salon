@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bookingForm) {
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const name = document.getElementById('b-name').value.trim();
             const service = document.getElementById('b-service').value;
             const date = document.getElementById('b-date').value;
@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             showAlert('Appointment booked successfully! We will see you soon.', 'success');
             bookingForm.reset();
-            
+
             setTimeout(() => {
                 closeBookingModal();
-                if(bookingAlert) bookingAlert.style.display = 'none';
+                if (bookingAlert) bookingAlert.style.display = 'none';
             }, 3000);
         });
     }

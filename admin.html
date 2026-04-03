@@ -35,6 +35,7 @@
             <h2 class="logo"><span>Arjun Unisex</span> Admin</h2>
             <nav class="nav-menu">
                 <button onclick="switchView('gallery')" class="active" id="btn-gallery">Gallery Manager</button>
+                <button onclick="switchView('bookings')" id="btn-bookings">Booking Tracker</button>
                 <button onclick="switchView('settings')" id="btn-settings">Settings</button>
                 <button onclick="logout()" style="margin-top: 2rem; color: #ff6b6b;">Logout</button>
             </nav>
@@ -59,6 +60,30 @@
                 </form>
                 <div id="admin-gallery-table" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
                     <!-- Gallery admin injected by JS -->
+                </div>
+            </section>
+            
+            <!-- Bookings Section -->
+            <section id="sec-bookings" class="section-view">
+                <div class="panel-header">
+                    <h2>Booking Tracker</h2>
+                </div>
+                <div class="card" style="overflow-x: auto;">
+                    <table id="bookings-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookings-tbody">
+                            <!-- Bookings will be loaded here -->
+                        </tbody>
+                    </table>
                 </div>
             </section>
 

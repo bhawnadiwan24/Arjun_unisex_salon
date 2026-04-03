@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arjun Unisex Salon | Elevate Your Beauty</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0;">
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0;">
             <a href="index.html" class="logo"><span>Arjun Unisex</span> Salon</a>
             <button class="nav-toggle" id="navToggle">☰</button>
             <ul class="nav-links" id="navLinks">
@@ -24,19 +27,25 @@
 
     <main style="margin-top: 70px;">
         <!-- Hero Section -->
-        <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat; padding: 8rem 0; color: white; text-align: center; min-height: 80vh; display: flex; align-items: center;">
+        <section class="hero"
+            style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat; padding: 8rem 0; color: white; text-align: center; min-height: 80vh; display: flex; align-items: center;">
             <div class="container fade-in">
-                <h1 style="font-size: 4rem; margin-bottom: 1.5rem; font-weight: 700; letter-spacing: 1px;">Discover Your True Beauty</h1>
-                <p style="font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">Experience premium salon services tailored to your unique style. Relax, rejuvenate, and shine.</p>
-                <button class="btn btn-primary" onclick="openBookingModal()" style="font-size: 1.1rem; padding: 14px 32px;">Book Appointment</button>
+                <h1 style="font-size: 4rem; margin-bottom: 1.5rem; font-weight: 700; letter-spacing: 1px;">Discover Your
+                    True Beauty</h1>
+                <p
+                    style="font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                    Experience premium salon services tailored to your unique style. Relax, rejuvenate, and shine.</p>
+                <button class="btn btn-primary" onclick="openBookingModal()"
+                    style="font-size: 1.1rem; padding: 14px 32px;">Book Appointment</button>
             </div>
         </section>
 
         <!-- Featured Services Preview -->
         <section class="container mt-2" style="padding: 5rem 0;">
             <h2 class="section-title">Featured Services</h2>
-            <div id="featured-services" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-               <!-- Service cards injected by JS -->
+            <div id="featured-services"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                <!-- Service cards injected by JS -->
             </div>
             <div class="text-center" style="margin-top: 3.5rem;">
                 <a href="services.html" class="btn btn-outline" style="font-size: 1.05rem;">View All Services</a>
@@ -77,13 +86,12 @@
             <form id="bookingForm">
                 <div class="form-group">
                     <label for="b-name">Full Name</label>
-                    <input type="text" id="b-name" class="form-control" placeholder="John Doe" required>
+                    <input type="text" id="b-name" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="b-service">Service</label>
                     <select id="b-service" class="form-control" required>
                         <option value="">Select a service</option>
-                        <!-- Options injected by JS -->
                     </select>
                 </div>
                 <div class="form-group">
@@ -99,13 +107,23 @@
         </div>
     </div>
 
+    <!-- Unified Footer -->
     <footer>
         <div class="container text-center">
             <h3 style="margin-bottom: 1rem; font-size: 1.5rem; letter-spacing: 1px;"><span style="color: var(--primary-color);">Arjun Unisex</span> Salon</h3>
-            <p style="margin-bottom: 1.5rem;">123 Beauty Lane, Innovation City, NY 10001</p>
+            
+            <div class="social-links" style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.5rem;">
+                <a href="https://instagram.com" target="_blank" style="color: white; transition: 0.3s;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://facebook.com" target="_blank" style="color: white; transition: 0.3s;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+
             <p>&copy; <span id="year"></span> Arjun Unisex Salon. All rights reserved.</p>
             <p style="margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem;">
-                <a href="admin.html" style="font-size: 0.9rem; letter-spacing: 0.5px;">Admin Login</a>
+                <a href="admin.html" style="font-size: 0.9rem; color: #888; text-decoration: none;">Admin Login</a>
             </p>
         </div>
     </footer>
@@ -137,4 +155,5 @@
         });
     </script>
 </body>
+
 </html>

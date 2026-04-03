@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const user = document.getElementById('login-user').value.trim().toLowerCase();
             const pass = document.getElementById('login-pass').value.trim();
-            
+
             // Allow dynamic credentials via localStorage
             const savedCredsStr = localStorage.getItem('adminCreds');
             const savedCreds = savedCredsStr ? JSON.parse(savedCredsStr) : { username: 'admin', password: 'password123' };
@@ -34,15 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const newUser = document.getElementById('new-user').value.trim();
             const newPass = document.getElementById('new-pass').value.trim();
-            
+
             if (newUser && newPass) {
                 localStorage.setItem('adminCreds', JSON.stringify({ username: newUser, password: newPass }));
-                
+
                 const alertBox = document.getElementById('creds-alert');
                 alertBox.textContent = 'Credentials updated successfully!';
                 alertBox.className = 'alert alert-success';
                 alertBox.style.display = 'block';
-                
+
                 credsForm.reset();
                 setTimeout(() => alertBox.style.display = 'none', 3000);
             }
@@ -61,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const file = fileInput.files[0];
                 const reader = new FileReader();
 
-                reader.onload = function(event) {
+                reader.onload = function (event) {
                     // Create an image object to resize it deeply to save localStorage space
                     const img = new Image();
-                    img.onload = function() {
+                    img.onload = function () {
                         const canvas = document.createElement('canvas');
                         const ctx = canvas.getContext('2d');
-                        
+
                         // Set max width/height to 800px to prevent hitting localStorage 5MB limit too quickly
                         const MAX_SIZE = 800;
                         let width = img.width;
@@ -84,11 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                 height = MAX_SIZE;
                             }
                         }
-                        
+
                         canvas.width = width;
                         canvas.height = height;
                         ctx.drawImage(img, 0, 0, width, height);
-                        
+
                         // Convert back to compressed base64 JPEG
                         const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
 
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             url: compressedBase64,
                             alt
                         });
-                        
+
                         try {
                             setGallery(gallery);
                             galleryForm.reset();
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     img.src = event.target.result;
                 };
-                
+
                 reader.readAsDataURL(file);
             }
         });
@@ -122,14 +122,14 @@ function checkLoginStatus() {
     const dashboardView = document.getElementById('dashboard-view');
 
     if (isLoggedIn === 'true') {
-        if(loginView) loginView.style.display = 'none';
-        if(dashboardView) {
+        if (loginView) loginView.style.display = 'none';
+        if (dashboardView) {
             dashboardView.classList.add('active');
             loadDashboardData();
         }
     } else {
-        if(loginView) loginView.style.display = 'flex';
-        if(dashboardView) dashboardView.classList.remove('active');
+        if (loginView) loginView.style.display = 'flex';
+        if (dashboardView) dashboardView.classList.remove('active');
     }
 }
 
@@ -141,22 +141,22 @@ function logout() {
 function switchView(viewName) {
     document.querySelectorAll('.nav-menu button').forEach(b => b.classList.remove('active'));
     const btn = document.getElementById('btn-' + viewName);
-    if(btn) btn.classList.add('active');
+    if (btn) btn.classList.add('active');
 
     document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
     document.getElementById('sec-' + viewName).classList.add('active');
 }
 
 function loadDashboardData() {
-    // Only load gallery as requested
     loadGalleryAdmin();
+    loadBookingsAdmin();
 }
 
 // --- Gallery ---
 function loadGalleryAdmin() {
     const container = document.getElementById('admin-gallery-table');
     const images = getGallery();
-    
+
     if (container) {
         container.innerHTML = '';
 
@@ -172,10 +172,53 @@ function loadGalleryAdmin() {
 }
 
 function deleteGalleryImage(id) {
-    if(confirm('Remove this image?')) {
+    if (confirm('Remove this image?')) {
         let gallery = getGallery();
         gallery = gallery.filter(g => g.id !== id);
         setGallery(gallery);
         loadGalleryAdmin();
     }
 }
+
+// --- Bookings ---
+function loadBookingsAdmin() {
+    const tbody = document.getElementById('bookings-tbody');
+    const bookings = getBookings();
+
+    if (tbody) {
+        tbody.innerHTML = '';
+
+        if (bookings.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No bookings found</td></tr>';
+            return;
+        }
+
+        // Sort by date/time (newest first for now, or use createdAt)
+        const sortedBookings = [...bookings].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        sortedBookings.forEach(booking => {
+            tbody.innerHTML += `
+                <tr>
+                    <td>${booking.name}</td>
+                    <td>${booking.service}</td>
+                    <td>${booking.date}</td>
+                    <td>${booking.time}</td>
+                    <td><span class="badge ${booking.status === 'Confirmed' ? 'badge-success' : 'badge-info'}" style="color: #155724; background: #d4edda; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">${booking.status}</span></td>
+                    <td class="actions">
+                        <button onclick="deleteBooking(${booking.id})" style="background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Delete</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+}
+
+function deleteBooking(id) {
+    if (confirm('Delete this booking record?')) {
+        let bookings = getBookings();
+        bookings = bookings.filter(b => b.id !== id);
+        setBookings(bookings);
+        loadBookingsAdmin();
+    }
+}
+

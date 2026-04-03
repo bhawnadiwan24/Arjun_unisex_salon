@@ -1,15 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Arjun Unisex Salon</title>
+    <title>Contact Us | Arjun Men's Salon</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Core Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-card,
+        .map-card,
+        .message-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Fix map height */
+        .map-card {
+            height: 100%;
+        }
+
+        .map-card iframe {
+            border-radius: var(--border-radius);
+            width: 100%;
+            height: 380px;
+            /* fixed height to prevent overlap */
+        }
+
+        /* Alert */
+        .alert {
+            display: none;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Minor Form Styling */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .btn {
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <header class="navbar">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0;">
+        <div class="container"
+            style="display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0;">
             <a href="index.html" class="logo"><span>Arjun Unisex</span> Salon</a>
             <button class="nav-toggle" id="navToggle">☰</button>
             <ul class="nav-links" id="navLinks">
@@ -27,61 +102,87 @@
         <section style="padding: 4rem 0; background: var(--bg-color); min-height: 80vh;">
             <div class="container fade-in">
                 <h1 class="section-title">Contact Us</h1>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem;">
-                    
+
+                <!-- Grid: Contact Info + Map -->
+                <div class="contact-grid">
                     <!-- Contact Info -->
-                    <div style="background: var(--white); padding: 2.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
+                    <div class="contact-card">
                         <h2 style="margin-bottom: 2rem; color: var(--secondary-color);">Get In Touch</h2>
-                        
+
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="font-size: 1.1rem; color: var(--primary-color); margin-bottom: 0.5rem;">Location</h3>
-                            <p style="color: var(--text-light);">123 Beauty Lane, Innovation City, NY 10001</p>
+                            <h3 style="font-size:1.1rem; color: var(--primary-color); margin-bottom:0.5rem;">Location
+                            </h3>
+                            <p style="color: var(--text-light); line-height:1.6;">Opposite St. Xavier's Higher Secondary
+                                School, beside Purani Toli, Jashpur, Chhattisgarh, India</p>
                         </div>
-                        
+
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="font-size: 1.1rem; color: var(--primary-color); margin-bottom: 0.5rem;">Phone</h3>
-                            <p style="color: var(--text-light);">(555) 123-4567</p>
+                            <h3 style="font-size:1.1rem; color: var(--primary-color); margin-bottom:0.5rem;">Phone &
+                                WhatsApp</h3>
+                            <div style="display:flex; flex-direction:column; gap:0.8rem; color:var(--text-light);">
+                                <div style="display:flex; align-items:center; gap:0.5rem;">
+                                    <a href="tel:+918305553447" style="text-decoration:none; color:inherit;">+91
+                                        8305553447</a>
+                                    <a href="tel:+918305553447" class="btn btn-primary"
+                                        style="padding: 4px 12px; font-size:0.8rem; margin-left:auto;">Call Now</a>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:0.5rem;">
+                                    <a href="https://wa.me/918305553447" target="_blank"
+                                        style="text-decoration:none; color:inherit;">WhatsApp</a>
+                                    <a href="https://wa.me/918305553447" target="_blank" class="btn btn-outline"
+                                        style="padding: 4px 12px; font-size:0.8rem; margin-left:auto;">Chat</a>
+                                </div>
+                            </div>
                         </div>
-                        
+
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="font-size: 1.1rem; color: var(--primary-color); margin-bottom: 0.5rem;">Email</h3>
-                            <p style="color: var(--text-light);">hello@arjununisexsalon.com</p>
+                            <h3 style="font-size:1.1rem; color: var(--primary-color); margin-bottom:0.5rem;">Email</h3>
+                            <a href="mailto:arjunmensparlour@gmail.com"
+                                style="color: var(--text-light); text-decoration: none;">arjunmensparlour@gmail.com</a>
                         </div>
-                        
+
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="font-size: 1.1rem; color: var(--primary-color); margin-bottom: 0.5rem;">Hours</h3>
-                            <p style="color: var(--text-light);">Mon-Fri: 9am - 8pm<br>Sat: 10am - 6pm<br>Sun: Closed</p>
+                            <h3 style="font-size:1.1rem; color: var(--primary-color); margin-bottom:0.5rem;">Hours</h3>
+                            <p style="color: var(--text-light); line-height:1.6;">Mon-Sun: 9:00 AM - 9:00 PM</p>
                         </div>
                     </div>
 
-                    <!-- Contact Form -->
-                    <div style="background: var(--white); padding: 2.5rem; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm);">
-                        <h2 style="margin-bottom: 2rem; color: var(--secondary-color);">Send us a Message</h2>
-                        <div id="contact-alert" class="alert"></div>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="c-name">Your Name</label>
-                                <input type="text" id="c-name" class="form-control" required placeholder="Jane Doe">
-                            </div>
-                            <div class="form-group">
-                                <label for="c-email">Email Address</label>
-                                <input type="email" id="c-email" class="form-control" required placeholder="jane@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="c-message">Message</label>
-                                <textarea id="c-message" class="form-control" required placeholder="How can we help you?"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
+                    <!-- Map -->
+                    <div class="map-card">
+                        <h2 style="margin-bottom: 1.5rem; color: var(--secondary-color); font-size:1.5rem;">Find Us</h2>
+                        <iframe
+                            src="https://maps.google.com/maps?q=Opposite%20St.%20Xavier's%20Higher%20Secondary%20School,%20beside%20Purani%20Toli,%20Jashpur,%20Chhattisgarh,%20India&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
+                </div>
 
+                <!-- Send Message Form (Full Width) -->
+                <div class="message-card" style="margin-top:3rem;">
+                    <h2 style="margin-bottom:2rem; color: var(--secondary-color);">Send us a Message</h2>
+                    <div id="contact-alert" class="alert"></div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="c-name">Your Name</label>
+                            <input type="text" id="c-name" class="form-control" required placeholder="Jane Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-email">Email Address</label>
+                            <input type="email" id="c-email" class="form-control" required
+                                placeholder="jane@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="c-message">Message</label>
+                            <textarea id="c-message" class="form-control" required
+                                placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Booking Modal Structure -->
+    <!-- Booking Modal -->
     <div class="modal-overlay" id="bookingModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeBookingModal()">×</button>
@@ -111,13 +212,23 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Unified Footer -->
     <footer>
         <div class="container text-center">
             <h3 style="margin-bottom: 1rem; font-size: 1.5rem; letter-spacing: 1px;"><span style="color: var(--primary-color);">Arjun Unisex</span> Salon</h3>
+            
+            <div class="social-links" style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.5rem;">
+                <a href="https://instagram.com" target="_blank" style="color: white; transition: 0.3s;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://facebook.com" target="_blank" style="color: white; transition: 0.3s;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+
             <p>&copy; <span id="year"></span> Arjun Unisex Salon. All rights reserved.</p>
             <p style="margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem;">
-                <a href="admin.html" style="font-size: 0.9rem;">Admin Login</a>
+                <a href="admin.html" style="font-size: 0.9rem; color: #888; text-decoration: none;">Admin Login</a>
             </p>
         </div>
     </footer>
@@ -125,6 +236,71 @@
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <script src="js/booking.js"></script>
-    <script src="js/contact.js"></script>
+    <script>
+        // Contact Form JS
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const contactAlert = document.getElementById('contact-alert');
+
+            function generateId() {
+                return '_' + Math.random().toString(36).substr(2, 9);
+            }
+
+            function getMessages() {
+                return JSON.parse(localStorage.getItem('messages') || '[]');
+            }
+
+            function setMessages(messages) {
+                localStorage.setItem('messages', JSON.stringify(messages));
+            }
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById('c-name').value.trim();
+                    const email = document.getElementById('c-email').value.trim();
+                    const message = document.getElementById('c-message').value.trim();
+
+                    if (!name || !email || !message) {
+                        contactAlert.textContent = 'Please fill out all fields.';
+                        contactAlert.className = 'alert alert-danger';
+                        contactAlert.style.display = 'block';
+                        return;
+                    }
+
+                    const newMessage = { id: generateId(), name, email, message, createdAt: new Date().toISOString() };
+                    const messages = getMessages();
+                    messages.push(newMessage);
+                    setMessages(messages);
+
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+
+                    const whatsappNumber = "918305553447";
+                    const whatsappText = `Hello, I am ${name}.\nI want to contact Arjun's Men's Parlour.\n\nEmail: ${email}\n\nMessage:\n${message}`;
+                    const encodedText = encodeURIComponent(whatsappText);
+                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+
+                        contactAlert.textContent = 'Redirecting to WhatsApp...';
+                        contactAlert.className = 'alert alert-success';
+                        contactAlert.style.display = 'block';
+
+                        contactForm.reset();
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+
+                        setTimeout(() => { contactAlert.style.display = 'none'; }, 3000);
+                    }, 800);
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>

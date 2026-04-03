@@ -9,8 +9,6 @@ const INITIAL_SERVICES = [
 const INITIAL_GALLERY = [
   { id: 1, url: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800", alt: "Salon Interior" },
   { id: 2, url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800", alt: "Hair styling" },
-  { id: 3, url: "https://images.unsplash.com/photo-1516975080661-4a25af9851f5?auto=format&fit=crop&q=80&w=800", alt: "Makeup products" },
-  { id: 4, url: "https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?auto=format&fit=crop&q=80&w=800", alt: "Happy client" },
   { id: 5, url: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800", alt: "Spa treatment" },
   { id: 6, url: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&q=80&w=800", alt: "Hair coloring" }
 ];
@@ -18,6 +16,13 @@ const INITIAL_GALLERY = [
 function initData() {
   if (!localStorage.getItem("services")) {
     localStorage.setItem("services", JSON.stringify(INITIAL_SERVICES));
+  }
+  if (localStorage.getItem("gallery")) {
+    const currentGallery = JSON.parse(localStorage.getItem("gallery"));
+    const filteredGallery = currentGallery.filter(img => img.id !== 3 && img.id !== 4);
+    if (filteredGallery.length !== currentGallery.length) {
+      localStorage.setItem("gallery", JSON.stringify(filteredGallery));
+    }
   }
   if (!localStorage.getItem("gallery")) {
     localStorage.setItem("gallery", JSON.stringify(INITIAL_GALLERY));
